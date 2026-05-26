@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Project Showcase — Instructor Portfolio</title>
+    <meta
+      name="description"
+      content="An instructor portfolio showcasing student CRUD projects — celebrating achievements and demonstrating real-world development skills."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ══════════════════════════════════════
+       LOADING SCREEN
+  ══════════════════════════════════════ -->
+    <div id="loader" class="loader">
+      <div class="loader__inner">
+        <div class="loader__ring"></div>
+        <span class="loader__text mono"
+          >Initializing Showcase<span class="loader__dots">...</span></span
+        >
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════ -->
+    <nav id="navbar" class="navbar">
+      <div class="nav__container">
+        <a href="#home" class="nav__logo">
+          <span class="logo__bracket">{</span>
+          <span class="logo__text">SPS</span>
+          <span class="logo__bracket">}</span>
+        </a>
+
+        <ul class="nav__links" id="navLinks">
+          <li><a href="#home" class="nav__link active">Home</a></li>
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#projects" class="nav__link">Projects</a></li>
+          <li><a href="#stats" class="nav__link">Stats</a></li>
+          <li><a href="#timeline" class="nav__link">Journey</a></li>
+          <li><a href="#featured" class="nav__link">Featured</a></li>
+          <li><a href="#reflection" class="nav__link">Reflection</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <button
+            id="themeToggle"
+            class="theme-toggle"
+            aria-label="Toggle dark mode"
+          >
+            <span class="theme-toggle__icon">☀️</span>
+          </button>
+          <button
+            class="nav__hamburger"
+            id="hamburger"
+            aria-label="Toggle menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- ══════════════════════════════════════
+         HERO SECTION
+    ══════════════════════════════════════ -->
+      <section id="home" class="hero">
+        <canvas id="heroCanvas" class="hero__canvas"></canvas>
+        <div class="hero__grid-overlay"></div>
+
+        <div class="hero__content reveal">
+          <div class="hero__badge mono">
+            <span class="badge__dot"></span>
+            Instructor Portfolio · Student Achievement Gallery
+          </div>
+
+          <h1 class="hero__title">
+            Student Project
+            <span class="hero__title--accent">Showcase</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            From learning concepts to building deployed systems — showcasing
+            student achievements through innovation and hard work.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">
+              <span>View Projects</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <a href="#about" class="btn btn--ghost">Meet the Instructor</a>
+          </div>
+
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <span class="hero__stat-num" data-target="48">0</span>
+              <span class="hero__stat-label">Students</span>
+            </div>
+            <div class="hero__stat-divider"></div>
+            <div class="hero__stat">
+              <span class="hero__stat-num" data-target="52">0</span>
+              <span class="hero__stat-label">Projects</span>
+            </div>
+            <div class="hero__stat-divider"></div>
+            <div class="hero__stat">
+              <span class="hero__stat-num" data-target="12">0</span>
+              <span class="hero__stat-label">Technologies</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__scroll-indicator">
+          <span class="mono">scroll</span>
+          <div class="scroll__line"></div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+         ABOUT SECTION
+    ══════════════════════════════════════ -->
+      <section id="about" class="about section">
+        <div class="container">
+          <div class="section__header reveal">
+            <span class="section__label mono">01 — About</span>
+            <h2 class="section__title">The Instructor Behind the Showcase</h2>
+          </div>
+
+          <div class="about__grid">
+            <div class="about__portrait reveal">
+              <div class="portrait__frame">
+                <img
+                  src="assets/profpic.png"
+                  alt="Instructor Portrait"
+                  class="portrait__image"
+                />
+                <div class="portrait__badge">
+                  <span class="mono">Instructor</span>
+                </div>
+              </div>
+              <div class="about__quick-facts">
+                <div class="quick-fact">
+                  <span class="quick-fact__icon">📚</span>
+                  <div>
+                    <strong>Subject</strong>
+                    <span>Information Management</span>
+                  </div>
+                </div>
+                <div class="quick-fact">
+                  <span class="quick-fact__icon">🎓</span>
+                  <div>
+                    <strong>Specialty</strong>
+                    <span>Full-Stack CRUD Development</span>
+                  </div>
+                </div>
+                <div class="quick-fact">
+                  <span class="quick-fact__icon">🏫</span>
+                  <div>
+                    <strong>Institution</strong>
+                    <span>Inabanga College of Arts and Sciences</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="about__content reveal">
+              <div class="about__intro">
+                <h3 class="about__name">Reneille Clark P. Nam-ay</h3>
+                <p class="about__role mono">
+                  Web Development Educator · Mentor · Guide
+                </p>
+              </div>
+
+              <p class="about__bio">
+                As an instructor, seeing students transform abstract concepts
+                into fully deployed, working systems is among the greatest
+                rewards in teaching. This showcase is not just a collection of
+                projects — it is a testament to weeks of persistence, debugging,
+                collaboration, and genuine growth.
+              </p>
+
+              <p class="about__bio">
+                Every card in this gallery represents a student who once stared
+                at a blank editor and now has a live application they can share
+                with the world. That journey — from confusion to clarity to
+                creation — is what drives my teaching philosophy.
+              </p>
+
+              <div class="philosophy__cards">
+                <div class="philosophy__card">
+                  <span class="philosophy__icon">💡</span>
+                  <h4>Learn by Doing</h4>
+                  <p>
+                    Concepts only solidify when students build with them. Every
+                    lesson ends with code.
+                  </p>
+                </div>
+                <div class="philosophy__card">
+                  <span class="philosophy__icon">🚀</span>
+                  <h4>Deploy, Don't Just Submit</h4>
+                  <p>
+                    A project isn't finished until it's live. Deployment is the
+                    final lesson.
+                  </p>
+                </div>
+                <div class="philosophy__card">
+                  <span class="philosophy__icon">🤝</span>
+                  <h4>Failure is Progress</h4>
+                  <p>
+                    Errors are the curriculum. Every bug squashed is a skill
+                    earned.
+                  </p>
+                </div>
+              </div>
+
+              <blockquote class="about__quote">
+                "I don't only teach. I guide students toward building real-world
+                systems."
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+         PROJECTS GALLERY
+    ══════════════════════════════════════ -->
+      <section id="projects" class="projects section">
+        <div class="container">
+          <div class="section__header reveal">
+            <span class="section__label mono">02 — Projects</span>
+            <h2 class="section__title">Student Project Gallery</h2>
+            <p class="section__desc">
+              Every project below represents a student's journey from concept to
+              deployment.
+            </p>
+          </div>
+
+          <!-- Search & Filter -->
+          <div class="projects__controls reveal">
+            <div class="search__wrapper">
+              <svg
+                class="search__icon"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+              >
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="5.5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M12.5 12.5L16 16"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <input
+                type="text"
+                id="searchInput"
+                class="search__input"
+                placeholder="Search students or projects..."
+              />
+              <button
+                class="search__clear"
+                id="searchClear"
+                aria-label="Clear search"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div class="filter__pills" id="filterPills">
+              <button class="filter__pill active" data-filter="all">All</button>
+              <button class="filter__pill" data-filter="bsis-2a">
+                BSIS 2-A
+              </button>
+              <button class="filter__pill" data-filter="bsis-2b">
+                BSIS 2-B
+              </button>
+              <button class="filter__pill" data-filter="bsis-2c">
+                BSIS 2-C
+              </button>
+            </div>
+          </div>
+
+          <!-- Projects Grid - Projects loaded dynamically from ./projects/ folder -->
+          <div class="projects__grid" id="projectsGrid">
+            <!-- Project cards will be loaded here by JavaScript from individual files -->
+          </div>
+          <!-- /.projects__grid -->
+
+          <!-- No Results Message -->
+          <div class="no-results" id="noResults" style="display: none">
+            <span class="no-results__icon">🔍</span>
+            <p>No projects found matching your search.</p>
+            <button class="btn btn--ghost btn--sm" id="clearFilters">
+              Clear Filters
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+         STATISTICS SECTION
+    ══════════════════════════════════════ -->
+      <section id="stats" class="stats section">
+        <div class="stats__bg"></div>
+        <div class="container">
+          <div class="section__header reveal">
+            <span class="section__label mono">03 — Impact</span>
+            <h2 class="section__title">Achievement in Numbers</h2>
+          </div>
+
+          <div class="stats__grid">
+            <div class="stat-card reveal">
+              <div class="stat-card__icon">👥</div>
+              <div class="stat-card__num">
+                <span class="counter" data-target="48">0</span>
+                <span class="stat-card__plus">+</span>
+              </div>
+              <p class="stat-card__label">Total Students</p>
+              <p class="stat-card__sub">across multiple batches</p>
+            </div>
+
+            <div class="stat-card reveal">
+              <div class="stat-card__icon">🚀</div>
+              <div class="stat-card__num">
+                <span class="counter" data-target="52">0</span>
+                <span class="stat-card__plus">+</span>
+              </div>
+              <p class="stat-card__label">Projects Deployed</p>
+              <p class="stat-card__sub">live on the internet</p>
+            </div>
+
+            <div class="stat-card reveal">
+              <div class="stat-card__icon">⚙️</div>
+              <div class="stat-card__num">
+                <span class="counter" data-target="12">0</span>
+                <span class="stat-card__plus">+</span>
+              </div>
+              <p class="stat-card__label">Technologies</p>
+              <p class="stat-card__sub">learned and applied</p>
+            </div>
+
+            <div class="stat-card reveal">
+              <div class="stat-card__icon">✅</div>
+              <div class="stat-card__num">
+                <span class="counter" data-target="96">0</span>
+                <span class="stat-card__plus">%</span>
+              </div>
+              <p class="stat-card__label">Success Rate</p>
+              <p class="stat-card__sub">deployment completion</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+         LEARNING JOURNEY TIMELINE
+    ══════════════════════════════════════ -->
+      <section id="timeline" class="timeline section">
+        <div class="container">
+          <div class="section__header reveal">
+            <span class="section__label mono">04 — Process</span>
+            <h2 class="section__title">The Learning Journey</h2>
+            <p class="section__desc">
+              Every student walked this path — from zero to deployed.
+            </p>
+          </div>
+
+          <div class="timeline__track">
+            <div class="timeline__item timeline__item--left reveal">
+              <div class="timeline__connector">
+                <div class="timeline__dot">
+                  <span>01</span>
+                </div>
+              </div>
+              <div class="timeline__card">
+                <div class="timeline__card-icon">🧠</div>
+                <h3 class="timeline__card-title">Foundation Learning</h3>
+                <p class="timeline__card-desc">
+                  Students master HTML, CSS, and programming fundamentals. Every
+                  syntax error becomes a lesson. Every small win builds
+                  confidence.
+                </p>
+                <div class="timeline__card-tags">
+                  <span>HTML/CSS</span><span>Programming Logic</span
+                  ><span>Git Basics</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline__item timeline__item--right reveal">
+              <div class="timeline__connector">
+                <div class="timeline__dot">
+                  <span>02</span>
+                </div>
+              </div>
+              <div class="timeline__card">
+                <div class="timeline__card-icon">⚒️</div>
+                <h3 class="timeline__card-title">CRUD Development</h3>
+                <p class="timeline__card-desc">
+                  The core of every web application — Create, Read, Update,
+                  Delete. Students build their first real data-driven features
+                  and discover the power of structured thinking.
+                </p>
+                <div class="timeline__card-tags">
+                  <span>PHP / Python</span><span>JavaScript</span
+                  ><span>Forms & Validation</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline__item timeline__item--left reveal">
+              <div class="timeline__connector">
+                <div class="timeline__dot">
+                  <span>03</span>
+                </div>
+              </div>
+              <div class="timeline__card">
+                <div class="timeline__card-icon">🗃️</div>
+                <h3 class="timeline__card-title">Database Integration</h3>
+                <p class="timeline__card-desc">
+                  Data persistence transforms a form into a system. Students
+                  connect their applications to real databases, write SQL
+                  queries, and handle relational data with confidence.
+                </p>
+                <div class="timeline__card-tags">
+                  <span>MySQL</span><span>SQL Queries</span
+                  ><span>Relationships</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline__item timeline__item--right reveal">
+              <div class="timeline__connector">
+                <div class="timeline__dot">
+                  <span>04</span>
+                </div>
+              </div>
+              <div class="timeline__card">
+                <div class="timeline__card-icon">☁️</div>
+                <h3 class="timeline__card-title">Deployment</h3>
+                <p class="timeline__card-desc">
+                  The most transformative moment — watching a local project go
+                  live. Students configure servers, manage domains, and share
+                  their work with the world for the first time.
+                </p>
+                <div class="timeline__card-tags">
+                  <span>Hosting</span><span>Domain Setup</span
+                  ><span>Environment Config</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline__item timeline__item--center reveal">
+              <div class="timeline__connector">
+                <div class="timeline__dot timeline__dot--final">
+                  <span>✓</span>
+                </div>
+              </div>
+              <div class="timeline__card timeline__card--final">
+                <div class="timeline__card-icon">🏆</div>
+                <h3 class="timeline__card-title">Completed Project</h3>
+                <p class="timeline__card-desc">
+                  A fully functional, deployed, real-world system built from
+                  scratch. Not a tutorial. Not a template. Their own creation —
+                  live on the internet, forever part of their portfolio.
+                </p>
+                <div class="timeline__card-tags">
+                  <span>🌐 Live URL</span><span>📁 GitHub Repo</span
+                  ><span>🎓 Achieved</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+         FEATURED PROJECT
+    ══════════════════════════════════════ -->
+      <section id="featured" class="featured section">
+        <div class="container">
+          <div class="section__header reveal">
+            <span class="section__label mono">05 — Spotlight</span>
+            <h2 class="section__title">Featured Student Project</h2>
+          </div>
+
+          <div class="featured__card reveal">
+            <div class="featured__badge">⭐ Project of the Batch</div>
+
+            <div class="featured__grid">
+              <div class="featured__preview">
+                <div class="featured__screenshot">
+                  <div class="browser__bar">
+                    <span class="browser__dot"></span>
+                    <span class="browser__dot"></span>
+                    <span class="browser__dot"></span>
+                    <span class="browser__url mono">myapp.vercel.app</span>
+                  </div>
+                  <div class="featured__placeholder">
+                    <span class="featured__icon">🏥</span>
+                    <span class="featured__label">Patient Records System</span>
+                    <span class="featured__sublabel mono"
+                      >Full-Stack Healthcare Application</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="featured__details">
+                <div class="featured__student">
+                  <span class="featured__avatar">RC</span>
+                  <div>
+                    <p class="featured__student-name">Roberto Castillo</p>
+                    <p class="featured__student-desc mono">
+                      Best Project · May 2025
+                    </p>
+                  </div>
+                </div>
+
+                <h3 class="featured__title">
+                  Patient Records Management System
+                </h3>
+
+                <p class="featured__desc">
+                  An outstanding full-stack healthcare application built with
+                  Python and Flask. Features include patient registration,
+                  appointment scheduling, medical history tracking, prescription
+                  management, and a comprehensive admin dashboard with real-time
+                  analytics. The project demonstrates exceptional understanding
+                  of database design, server-side logic, and user experience.
+                </p>
+
+                <div class="featured__highlights">
+                  <div class="highlight">
+                    <span class="highlight__icon">📊</span>
+                    <span>Real-time Dashboard</span>
+                  </div>
+                  <div class="highlight">
+                    <span class="highlight__icon">🔒</span>
+                    <span>Authentication System</span>
+                  </div>
+                  <div class="highlight">
+                    <span class="highlight__icon">📱</span>
+                    <span>Mobile Responsive</span>
+                  </div>
+                  <div class="highlight">
+                    <span class="highlight__icon">🗄️</span>
+                    <span>Relational Database</span>
+                  </div>
+                </div>
+
+                <div class="tech__tags">
+                  <span class="tech__tag" data-tech="python">Python</span>
+                  <span class="tech__tag" data-tech="flask">Flask</span>
+                  <span class="tech__tag" data-tech="mysql">MySQL</span>
+                  <span class="tech__tag" data-tech="javascript"
+                    >JavaScript</span
+                  >
+                </div>
+
+                <div class="featured__actions">
+                  <a
+                    href="#"
+                    class="btn btn--primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    referrerpolicy="no-referrer"
+                  >
+                    <span>View Live Project</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path
+                        d="M3 8h10M9 4l4 4-4 4"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="#"
+                    class="btn btn--ghost"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    referrerpolicy="no-referrer"
+                    >View GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+         INSTRUCTOR REFLECTION
+    ══════════════════════════════════════ -->
+      <section id="reflection" class="reflection section">
+        <div class="container">
+          <div class="section__header reveal">
+            <span class="section__label mono">06 — Reflection</span>
+            <h2 class="section__title">A Message of Pride</h2>
+          </div>
+
+          <div class="reflection__card reveal">
+            <div class="reflection__quote-mark">"</div>
+            <div class="reflection__content">
+              <p class="reflection__text">
+                When I look at this gallery, I don't just see code and deployed
+                URLs. I see the late nights debugging a database connection. I
+                see the confusion that turned into clarity. I see students who
+                once said <em>"I can't do this"</em>
+                and finished the semester with a live system they built
+                themselves.
+              </p>
+              <p class="reflection__text">
+                Teaching is not about transferring information from a slide to a
+                notebook. It is about lighting a fire — giving students the
+                belief that they can build something real. Every project in this
+                showcase is proof that they did exactly that.
+              </p>
+              <p class="reflection__text">
+                To every student who pushed through the errors, the confusion,
+                and the self-doubt:
+                <strong>this is your achievement.</strong> I only pointed the
+                way. You did the work.
+              </p>
+            </div>
+            <div class="reflection__signature">
+              <div class="signature__line"></div>
+              <div class="signature__info">
+                <strong>Instructor Name</strong>
+                <span class="mono">Web Development Educator</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="reflection__values reveal">
+            <div class="value__item">
+              <span class="value__icon">🎯</span>
+              <span>Purpose-Driven Teaching</span>
+            </div>
+            <div class="value__item">
+              <span class="value__icon">🌱</span>
+              <span>Growth over Grades</span>
+            </div>
+            <div class="value__item">
+              <span class="value__icon">🔥</span>
+              <span>Real-World Impact</span>
+            </div>
+            <div class="value__item">
+              <span class="value__icon">🤝</span>
+              <span>Student Success First</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="footer__top">
+        <div class="container">
+          <div class="footer__grid">
+            <div class="footer__brand">
+              <a href="#home" class="nav__logo">
+                <span class="logo__bracket">{</span>
+                <span class="logo__text">SPS</span>
+                <span class="logo__bracket">}</span>
+              </a>
+              <p class="footer__tagline">
+                Celebrating student achievement through real-world development.
+                Every project tells a story of growth.
+              </p>
+              <div class="footer__socials">
+                <a href="#" class="social__link" aria-label="GitHub">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                    />
+                  </svg>
+                </a>
+                <a href="#" class="social__link" aria-label="LinkedIn">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="mailto:instructor@university.edu"
+                  class="social__link"
+                  aria-label="Email"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="footer__section">
+              <h4 class="footer__heading">Navigation</h4>
+              <ul class="footer__links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#stats">Statistics</a></li>
+                <li><a href="#timeline">Journey</a></li>
+                <li><a href="#featured">Featured</a></li>
+              </ul>
+            </div>
+
+            <div class="footer__section">
+              <h4 class="footer__heading">Contact</h4>
+              <ul class="footer__contact">
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                  <span>reneilleclark.namay@gmail.com</span>
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span>Inabanga College of Arts and Sciences</span>
+                </li>
+                <li>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14h-.08z"
+                    />
+                  </svg>
+                  <span>+63 951 960 3948</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="container">
+          <p class="footer__copy">
+            © <span id="currentYear"></span> Student Project Showcase. Built
+            with ❤️ to celebrate student achievement.
+          </p>
+          <p class="footer__sub mono">
+            Instructor Portfolio · All Rights Reserved
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button id="scrollTop" class="scroll-top" aria-label="Scroll to top">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path
+          d="M10 15V5M5 10l5-5 5 5"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+
+    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-check-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
