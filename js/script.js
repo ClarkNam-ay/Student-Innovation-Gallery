@@ -188,10 +188,17 @@ async function loadProjects() {
   // Array of student project files to load
   // Example: ['student-1', 'student-2', ..., 'student-70']
   const projectFiles = [
-    "student-1",
-    "student-2",
-    "student-3",
-    "student-4",
+    "denver",
+    "fritchel",
+    "grace",
+    "jabez",
+    "jamaica",
+    "jesum",
+    "kelvin",
+    "mariel",
+    "nino",
+    "precious",
+    "glyndon",
     // Add more as needed: 'student-7', 'student-8', ..., 'student-70'
   ];
 
@@ -264,15 +271,18 @@ function extractProjectData(card) {
   const techTags = $$(".tech__tag", card).map((tag) =>
     cleanText(tag.textContent),
   );
-  const liveUrl = sanitizeExternalUrl(actionLinks[0]?.getAttribute("href") || "#");
-  const githubUrl = sanitizeExternalUrl(actionLinks[1]?.getAttribute("href") || "#");
+  const liveUrl = sanitizeExternalUrl(
+    actionLinks[0]?.getAttribute("href") || "#",
+  );
+  const githubUrl = sanitizeExternalUrl(
+    actionLinks[1]?.getAttribute("href") || "#",
+  );
   const githubUsername = getGithubUsername(githubUrl);
   const title = cleanText($(".project__title", card)?.textContent);
   const image = $(".project-card__image img", card);
-  const imageSrc =
-    normalizeProjectAssetUrl(
-      image?.getAttribute("src") || image?.getAttribute("data-src") || "",
-    );
+  const imageSrc = normalizeProjectAssetUrl(
+    image?.getAttribute("src") || image?.getAttribute("data-src") || "",
+  );
 
   return {
     id: card.dataset.projectId,
@@ -353,7 +363,11 @@ function prepareProjectImagePreview(card, projectId) {
   `;
 
   on(imageArea, "click", (event) => {
-    if (event.target.closest(".project-card__overlay, img, .project-card__placeholder")) {
+    if (
+      event.target.closest(
+        ".project-card__overlay, img, .project-card__placeholder",
+      )
+    ) {
       openProjectImageModal(projectId, event.currentTarget);
     }
   });
@@ -407,7 +421,9 @@ function updateTitleRating(projectId) {
   const badge = $(".project-title-rating", card);
   if (!badge) return;
 
-  badge.textContent = stats.count ? `\u2605 ${formatRating(stats.average)}` : "\u2605 0.0";
+  badge.textContent = stats.count
+    ? `\u2605 ${formatRating(stats.average)}`
+    : "\u2605 0.0";
   badge.title = stats.count
     ? `${formatRating(stats.average)} average from ${pluralize(stats.count, "vote")}`
     : "No ratings yet";
@@ -452,7 +468,10 @@ function getProjectStats(projectId) {
 
 function setRatingControls(projectId, enabled) {
   const modal = $("#projectModal");
-  if (modal?.dataset.view !== "rating" || modal.dataset.projectId !== projectId) {
+  if (
+    modal?.dataset.view !== "rating" ||
+    modal.dataset.projectId !== projectId
+  ) {
     return;
   }
 
@@ -483,7 +502,8 @@ function updateRatingDisplay(projectId) {
   }
 
   if (buttonText) buttonText.textContent = hasUserRating ? "Rated" : "Rate";
-  if (buttonMeta) buttonMeta.textContent = stats.count ? formatRating(stats.average) : "New";
+  if (buttonMeta)
+    buttonMeta.textContent = stats.count ? formatRating(stats.average) : "New";
 
   updateTitleRating(projectId);
   updateRatingModal(projectId);
@@ -868,7 +888,10 @@ function updateFeaturedProject() {
   if (browserUrl) browserUrl.textContent = getProjectHost(project.liveUrl);
   if (featuredMedia) featuredMedia.innerHTML = renderFeaturedPreview(project);
   if (avatar) {
-    avatar.classList.toggle("featured__avatar--image", Boolean(project.githubAvatarUrl));
+    avatar.classList.toggle(
+      "featured__avatar--image",
+      Boolean(project.githubAvatarUrl),
+    );
     avatar.innerHTML = project.githubAvatarUrl
       ? `<img src="${escapeHtml(project.githubAvatarUrl)}" alt="${escapeHtml(project.studentName)} GitHub profile" loading="lazy" />`
       : escapeHtml(project.avatar);
