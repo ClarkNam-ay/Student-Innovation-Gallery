@@ -10,6 +10,7 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
@@ -35,9 +36,11 @@
     <nav id="navbar" class="navbar">
       <div class="nav__container">
         <a href="#home" class="nav__logo">
-          <span class="logo__bracket">{</span>
-          <span class="logo__text">SPS</span>
-          <span class="logo__bracket">}</span>
+          <img
+            src="assets/logo.png"
+            alt="Student Project Showcase Logo"
+            class="logo__image"
+          />
         </a>
 
         <ul class="nav__links" id="navLinks">
@@ -80,7 +83,7 @@
         <div class="hero__content reveal">
           <div class="hero__badge mono">
             <span class="badge__dot"></span>
-            Instructor Portfolio · Student Achievement Gallery
+            Instructor Portfolio · Student Innovation Gallery
           </div>
 
           <h1 class="hero__title">
@@ -89,8 +92,9 @@
           </h1>
 
           <p class="hero__subtitle">
-            From learning concepts to building deployed systems — showcasing
-            student achievements through innovation and hard work.
+            A showcase of student-built systems transformed from classroom
+            learning into real-world deployed applications through creativity,
+            dedication, and innovation.
           </p>
 
           <div class="hero__actions">
@@ -111,17 +115,17 @@
 
           <div class="hero__stats">
             <div class="hero__stat">
-              <span class="hero__stat-num" data-target="48">0</span>
+              <span class="hero__stat-num" data-target="78">0</span>
               <span class="hero__stat-label">Students</span>
             </div>
             <div class="hero__stat-divider"></div>
             <div class="hero__stat">
-              <span class="hero__stat-num" data-target="52">0</span>
+              <span class="hero__stat-num" data-target="21">0</span>
               <span class="hero__stat-label">Projects</span>
             </div>
             <div class="hero__stat-divider"></div>
             <div class="hero__stat">
-              <span class="hero__stat-num" data-target="12">0</span>
+              <span class="hero__stat-num" data-target="5">0</span>
               <span class="hero__stat-label">Technologies</span>
             </div>
           </div>
@@ -167,7 +171,7 @@
                   <span class="quick-fact__icon">🎓</span>
                   <div>
                     <strong>Specialty</strong>
-                    <span>Full-Stack CRUD Development</span>
+                    <span>Full-Stack Web Systems</span>
                   </div>
                 </div>
                 <div class="quick-fact">
@@ -192,15 +196,16 @@
                 As an instructor, seeing students transform abstract concepts
                 into fully deployed, working systems is among the greatest
                 rewards in teaching. This showcase is not just a collection of
-                projects — it is a testament to weeks of persistence, debugging,
-                collaboration, and genuine growth.
+                projects — it is a testament to weeks of persistence,
+                problem-solving, debugging, collaboration, and growth.
               </p>
 
               <p class="about__bio">
-                Every card in this gallery represents a student who once stared
-                at a blank editor and now has a live application they can share
-                with the world. That journey — from confusion to clarity to
-                creation — is what drives my teaching philosophy.
+                Every project in this gallery represents a student who once
+                faced an empty editor, uncertain where to begin, and now stands
+                behind a deployed application built through learning,
+                persistence, and growth. That journey — from confusion to
+                clarity to creation — is what drives my teaching philosophy.
               </p>
 
               <div class="philosophy__cards">
@@ -214,7 +219,7 @@
                 </div>
                 <div class="philosophy__card">
                   <span class="philosophy__icon">🚀</span>
-                  <h4>Deploy, Don't Just Submit</h4>
+                  <h4>Build. Deploy. Grow.</h4>
                   <p>
                     A project isn't finished until it's live. Deployment is the
                     final lesson.
@@ -231,8 +236,8 @@
               </div>
 
               <blockquote class="about__quote">
-                "I don't only teach. I guide students toward building real-world
-                systems."
+                "I don't simply teach technology — I guide students in
+                transforming ideas into systems that create impact."
               </blockquote>
             </div>
           </div>
@@ -312,6 +317,28 @@
           </div>
           <!-- /.projects__grid -->
 
+          <!-- Pagination Controls -->
+          <div class="pagination" id="pagination" style="display: none">
+            <button
+              class="pagination__btn pagination__prev"
+              id="paginationPrev"
+              aria-label="Previous page"
+            >
+              ← Prev
+            </button>
+            <div class="pagination__info">
+              <span id="paginationCurrent">1</span> /
+              <span id="paginationTotal">1</span>
+            </div>
+            <button
+              class="pagination__btn pagination__next"
+              id="paginationNext"
+              aria-label="Next page"
+            >
+              Next →
+            </button>
+          </div>
+
           <!-- No Results Message -->
           <div class="no-results" id="noResults" style="display: none">
             <span class="no-results__icon">🔍</span>
@@ -338,17 +365,17 @@
             <div class="stat-card reveal">
               <div class="stat-card__icon">👥</div>
               <div class="stat-card__num">
-                <span class="counter" data-target="48">0</span>
+                <span class="counter" data-target="78">0</span>
                 <span class="stat-card__plus">+</span>
               </div>
               <p class="stat-card__label">Total Students</p>
-              <p class="stat-card__sub">across multiple batches</p>
+              <p class="stat-card__sub">across multiple sections</p>
             </div>
 
             <div class="stat-card reveal">
               <div class="stat-card__icon">🚀</div>
               <div class="stat-card__num">
-                <span class="counter" data-target="52">0</span>
+                <span class="counter" data-target="21">0</span>
                 <span class="stat-card__plus">+</span>
               </div>
               <p class="stat-card__label">Projects Deployed</p>
@@ -358,7 +385,7 @@
             <div class="stat-card reveal">
               <div class="stat-card__icon">⚙️</div>
               <div class="stat-card__num">
-                <span class="counter" data-target="12">0</span>
+                <span class="counter" data-target="5">0</span>
                 <span class="stat-card__plus">+</span>
               </div>
               <p class="stat-card__label">Technologies</p>
@@ -368,7 +395,7 @@
             <div class="stat-card reveal">
               <div class="stat-card__icon">✅</div>
               <div class="stat-card__num">
-                <span class="counter" data-target="96">0</span>
+                <span class="counter" data-target="97">0</span>
                 <span class="stat-card__plus">%</span>
               </div>
               <p class="stat-card__label">Success Rate</p>
@@ -428,8 +455,7 @@
                   and discover the power of structured thinking.
                 </p>
                 <div class="timeline__card-tags">
-                  <span>PHP / Python</span><span>JavaScript</span
-                  ><span>Forms & Validation</span>
+                  <span>MySQL</span><span>PHP</span><span>InfinityFree</span>
                 </div>
               </div>
             </div>
@@ -631,24 +657,32 @@
             <div class="reflection__quote-mark">"</div>
             <div class="reflection__content">
               <p class="reflection__text">
-                When I look at this gallery, I don't just see code and deployed
-                URLs. I see the late nights debugging a database connection. I
+                When I look through this gallery, I don't just see code and
+                deployed systems. I see late nights spent debugging errors,
+                fixing database connections, and learning through frustration. I
                 see the confusion that turned into clarity. I see students who
                 once said <em>"I can't do this"</em>
                 and finished the semester with a live system they built
                 themselves.
               </p>
               <p class="reflection__text">
-                Teaching is not about transferring information from a slide to a
-                notebook. It is about lighting a fire — giving students the
-                belief that they can build something real. Every project in this
-                showcase is proof that they did exactly that.
+                Teaching is not simply transferring information from slides to
+                notebooks. It is about building confidence, creating
+                opportunities, and helping students realize they are capable of
+                building something meaningful. It is about lighting a fire —
+                giving students the belief that they can build something real.
+                Every project in this showcase is proof that they did exactly
+                that.
               </p>
               <p class="reflection__text">
-                To every student who pushed through the errors, the confusion,
-                and the self-doubt:
-                <strong>this is your achievement.</strong> I only pointed the
-                way. You did the work.
+                To every student who pushed through errors, confusion, failed
+                deployments, debugging sessions, and moments of self-doubt:
+                <strong>This belongs to you. You built this.</strong> I only
+                pointed the way. You did the work.
+              </p>
+              <p class="reflection__closing">
+                From classroom concepts to deployed systems — this is what
+                growth looks like.
               </p>
             </div>
             <div class="reflection__signature">
@@ -691,16 +725,22 @@
           <div class="footer__grid">
             <div class="footer__brand">
               <a href="#home" class="nav__logo">
-                <span class="logo__bracket">{</span>
-                <span class="logo__text">SPS</span>
-                <span class="logo__bracket">}</span>
+                <img
+                  src="assets/logo.png"
+                  alt="Student Project Showcase Logo"
+                  class="logo__image"
+                />
               </a>
               <p class="footer__tagline">
                 Celebrating student achievement through real-world development.
                 Every project tells a story of growth.
               </p>
               <div class="footer__socials">
-                <a href="#" class="social__link" aria-label="GitHub">
+                <a
+                  href="https://github.com/ClarkNam-ay"
+                  class="social__link"
+                  aria-label="GitHub"
+                >
                   <svg
                     width="20"
                     height="20"
@@ -712,7 +752,11 @@
                     />
                   </svg>
                 </a>
-                <a href="#" class="social__link" aria-label="LinkedIn">
+                <a
+                  href="https://www.linkedin.com/in/reneille-clark-nam-ay/"
+                  class="social__link"
+                  aria-label="LinkedIn"
+                >
                   <svg
                     width="20"
                     height="20"
@@ -725,9 +769,11 @@
                   </svg>
                 </a>
                 <a
-                  href="mailto:instructor@university.edu"
+                  href="https://clarkportfolio-iota.vercel.app/"
                   class="social__link"
-                  aria-label="Email"
+                  aria-label="Portfolio"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <svg
                     width="20"
@@ -815,11 +861,12 @@
       <div class="footer__bottom">
         <div class="container">
           <p class="footer__copy">
-            © <span id="currentYear"></span> Student Project Showcase. Built
-            with ❤️ to celebrate student achievement.
+            © <span id="currentYear"></span> Student Project Showcase.
+            Celebrating growth, innovation, and student achievement.
           </p>
           <p class="footer__sub mono">
-            Instructor Portfolio · All Rights Reserved
+            Instructor Portfolio · Built to showcase learning beyond the
+            classroom
           </p>
         </div>
       </div>

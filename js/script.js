@@ -254,6 +254,11 @@ function initializeLoadedProjects(projectsGrid) {
   observeRevealElements();
   updateFeaturedProject();
   initializeFirebaseRatings();
+
+  // Initialize pagination display after projects are loaded
+  if (window.initPaginationDisplay) {
+    window.initPaginationDisplay();
+  }
 }
 
 function registerProjectCard(card) {
@@ -1257,7 +1262,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 /* ──────────────────────────────────────
-   PROJECTS SEARCH & FILTER
+   PROJECTS SEARCH & FILTER WITH PAGINATION
 ────────────────────────────────────── */
 (function initProjectsFilter() {
   const searchInput = $("#searchInput");
@@ -1265,21 +1270,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterPills = $$(".filter__pill");
   const noResults = $("#noResults");
   const clearFilters = $("#clearFilters");
+  const pagination = $("#pagination");
+  const paginationPrev = $("#paginationPrev");
+  const paginationNext = $("#paginationNext");
+  const paginationCurrent = $("#paginationCurrent");
+  const paginationTotal = $("#paginationTotal");
 
   if (!searchInput) return;
 
   let activeFilter = "all";
+  let currentPage = 1;
+  const itemsPerPage = 6;
+  let filteredCards = [];
+  let totalPages = 1;
 
   function normalize(str) {
     return str.toLowerCase().trim();
   }
 
-  function filterProjects() {
+  function getFilteredCards() {
     const query = normalize(searchInput.value);
-    let visible = 0;
-
-    // Get project cards dynamically (queries DOM each time)
     const projectCards = $$(".project-card");
+    const filtered = [];
 
     projectCards.forEach((card) => {
       const name = normalize(
@@ -1303,14 +1315,54 @@ document.addEventListener("DOMContentLoaded", () => {
       const matchesFilter =
         activeFilter === "all" || tags.includes(activeFilter);
 
-      const show = matchesSearch && matchesFilter;
-      card.classList.toggle("hidden", !show);
-      if (show) visible++;
+      if (matchesSearch && matchesFilter) {
+        filtered.push(card);
+      }
     });
 
-    // Toggle no results
-    if (noResults) {
-      noResults.style.display = visible === 0 ? "flex" : "none";
+    return filtered;
+  }
+
+  function updatePagination() {
+    filteredCards = getFilteredCards();
+    totalPages = Math.max(1, Math.ceil(filteredCards.length / itemsPerPage));
+
+    // Reset to page 1 if current page exceeds total pages
+    if (currentPage > totalPages) {
+      currentPage = 1;
+    }
+
+    // Calculate which cards to show
+    const startIdx = (currentPage - 1) * itemsPerPage;
+    const endIdx = startIdx + itemsPerPage;
+    const projectCards = $$(".project-card");
+
+    projectCards.forEach((card) => {
+      const isVisible = filteredCards.includes(card);
+      const isOnCurrentPage =
+        isVisible &&
+        filteredCards.indexOf(card) >= startIdx &&
+        filteredCards.indexOf(card) < endIdx;
+      card.classList.toggle("hidden", !isOnCurrentPage);
+    });
+
+    // Update pagination controls - show only if there are more than itemsPerPage results
+    if (filteredCards.length > itemsPerPage) {
+      pagination.style.display = "flex";
+      paginationPrev.disabled = currentPage === 1;
+      paginationNext.disabled = currentPage === totalPages;
+      paginationCurrent.textContent = currentPage;
+      paginationTotal.textContent = totalPages;
+      // Hide no-results when showing pagination
+      if (noResults) {
+        noResults.style.display = "none";
+      }
+    } else {
+      pagination.style.display = "none";
+      // Show no-results only if there are 0 filtered results
+      if (noResults) {
+        noResults.style.display = filteredCards.length === 0 ? "flex" : "none";
+      }
     }
   }
 
@@ -1318,14 +1370,16 @@ document.addEventListener("DOMContentLoaded", () => {
   on(searchInput, "input", () => {
     const hasVal = searchInput.value.length > 0;
     if (searchClear) searchClear.classList.toggle("visible", hasVal);
-    filterProjects();
+    currentPage = 1;
+    updatePagination();
   });
 
   // Clear search
   on(searchClear, "click", () => {
     searchInput.value = "";
     searchClear.classList.remove("visible");
-    filterProjects();
+    currentPage = 1;
+    updatePagination();
     searchInput.focus();
   });
 
@@ -1335,7 +1389,8 @@ document.addEventListener("DOMContentLoaded", () => {
       filterPills.forEach((p) => p.classList.remove("active"));
       pill.classList.add("active");
       activeFilter = pill.getAttribute("data-filter");
-      filterProjects();
+      currentPage = 1;
+      updatePagination();
     });
   });
 
@@ -1344,10 +1399,41 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.value = "";
     if (searchClear) searchClear.classList.remove("visible");
     activeFilter = "all";
+    currentPage = 1;
     filterPills.forEach((p) => p.classList.remove("active"));
     filterPills[0]?.classList.add("active");
-    filterProjects();
+    updatePagination();
   });
+
+  // Pagination controls
+  on(paginationPrev, "click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      updatePagination();
+      // Scroll to projects section
+      const projectsSection = $("#projects");
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  });
+
+  on(paginationNext, "click", () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      updatePagination();
+      // Scroll to projects section
+      const projectsSection = $("#projects");
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  });
+
+  // Export function to initialize pagination after projects are loaded
+  window.initPaginationDisplay = function () {
+    updatePagination();
+  };
 })();
 
 /* ──────────────────────────────────────
