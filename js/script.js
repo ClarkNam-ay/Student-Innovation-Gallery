@@ -209,6 +209,15 @@ async function loadProjects() {
     "prince",
     "troy",
     "erbert",
+    "angelyn",
+    "junifiel",
+    "klex",
+    "trixia",
+    "amir",
+    "britney",
+    "jumafe",
+    "reymar",
+    "charles",
     // Add more as needed: 'student-7', 'student-8', ..., 'student-70'
   ];
 
